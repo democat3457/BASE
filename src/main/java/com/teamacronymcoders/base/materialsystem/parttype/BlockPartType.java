@@ -33,6 +33,7 @@ public class BlockPartType extends PartType {
         blockDataPieces.add(new PartDataPiece("harvestLevel", false));
         blockDataPieces.add(new PartDataPiece("harvestTool", false));
         blockDataPieces.add(new PartDataPiece("transparent", false));
+        blockDataPieces.add(new PartDataPiece("beaconBase", false));
         return blockDataPieces;
     }
 
