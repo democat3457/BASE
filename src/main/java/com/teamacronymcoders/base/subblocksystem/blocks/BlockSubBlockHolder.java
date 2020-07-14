@@ -236,6 +236,11 @@ public class BlockSubBlockHolder extends BlockBaseNoModel implements IHasBlockSt
     public boolean isFullBlock(IBlockState blockState) {
         return this.getSubBlock(blockState).isFullBlock();
     }
+    
+    @Override
+    public boolean isBeaconBase(IBlockAccess worldObj, BlockPos pos, BlockPos beacon) {
+        return this.getSubBlock(worldObj.getBlockState(pos)).isBeaconBase(worldObj, pos, beacon);
+    }
 
     @Override
     @SuppressWarnings("deprecation")
