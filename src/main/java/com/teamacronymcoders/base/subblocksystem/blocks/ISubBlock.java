@@ -15,6 +15,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.translation.I18n;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
@@ -83,6 +84,8 @@ public interface ISubBlock {
     boolean isPassable();
 
     boolean isFullBlock();
+	
+    boolean isBeaconBase(IBlockAccess worldObj, BlockPos pos, BlockPos beacon);
 
     int getLightOpacity();
 
