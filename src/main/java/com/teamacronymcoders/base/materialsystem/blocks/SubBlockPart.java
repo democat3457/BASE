@@ -23,6 +23,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class SubBlockPart extends SubBlockBase {
@@ -34,6 +35,7 @@ public class SubBlockPart extends SubBlockBase {
     private int harvestLevel = 1;
     private String harvestTool = "pickaxe";
     private boolean transparent = false;
+    private boolean beaconBase = false;
 
     public SubBlockPart(MaterialPart materialPart, CreativeTabs creativeTab) {
         super(materialPart.getUnlocalizedName());
@@ -45,6 +47,7 @@ public class SubBlockPart extends SubBlockBase {
         harvestLevel = data.getValue("harvestLevel", harvestLevel, DataPartParsers::getInt);
         harvestTool = data.getValue("harvestTool", harvestTool, DataPartParsers::getString);
         transparent = data.getValue("transparent", transparent, DataPartParsers::getBool);
+        beaconBase = data.getValue("beaconBase", beaconBase, DataPartParsers::getBool);
 
         this.creativeTabs = creativeTab;
     }
@@ -177,6 +180,11 @@ public class SubBlockPart extends SubBlockBase {
     @Override
     public boolean isFullBlock() {
         return !transparent;
+    }
+    
+    @Override
+    public boolean isBeaconBase(IBlockAccess worldObj, BlockPos pos, BlockPos beacon) {
+        return beaconBase;
     }
 
     @Override
